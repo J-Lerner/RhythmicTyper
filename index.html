@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png">
+    <title>Rythmic Typer</title>
+</head>
+<body>
+    <div id="modal">
+        <div id="modal-container">
+            <h1>How It Works</h1>
+            <ol>
+                <li>Click the white text box</li>
+                <li>Listen to the rythm</li>
+                <li>Type the words in the box along with the rythm</li>
+            </ol>
+            <a>
+                To change the song or font, click the settings icon in the top right of the screen.
+                <br><br>
+                Clicking off-beat or typing the wrong letter will lose points
+                <br>
+                Typing the right letter on beat will gain points.
+                <br>
+            </a>
+            <small>(you cannot gain more or less points for the same action)</small>
+        </div>
+    </div>
+
+    <div id="side-bar">
+        <div id="side-container">
+            <table id="song-list-table">
+                <tr>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <div id="bar-open" onclick="OpenSideBar()">
+      <a class="material-symbols-outlined">
+        settings
+      </a>
+    </div>    
+
+    <div id="top-curve"></div>
+    <img src="icon.png" id="icon" alt="main icon">
+
+    <div id="type-div">
+        <input type="text" id="main-text-inp" title="box" onclick="widenBox()">
+        <a id="copy-text"></a>
+    </div>
+
+    <div id="ready-text">Your turn!</div>
+    
+
+    <div id="vb-container">
+        <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+            <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" style="stroke: none; fill:rgb(103, 103, 255);"></path>
+        </svg>
+    </div>
+</body>
+<script src="words.js"></script>
+<script src="script.js"></script>
+<script src="cookies.js"></script>
+
+</html>
