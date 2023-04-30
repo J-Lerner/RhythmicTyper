@@ -10,7 +10,7 @@
     <title>Rhythmic Typer</title>
 </head>
 <body>
-    <div id="modal" onclick="ChangeModal(false); LoadTable()">
+    <div id="modal" onclick="ChangeModal(false); if (!tableLoaded) LoadTable()">
         <div id="modal-container">
             <div id="modal-text-div">
                 <h1>How It Works</h1>
@@ -58,12 +58,12 @@
     </div>
     
     <div id="song-display">
+        <a id="song-string">-Song Sheet-</a><br>
         <a id="song-name">-Name-</a><br>
-        <a id="song-bpm">-BPM-</a><br>
-        <a id="song-string">-Song Sheet-</a>
+        <a id="song-bpm">-BPM-</a>
     </div>
     
-    <div id="ready-text">Your turn!</div>
+    <div id="ready-text"></div>
 
     <div id="type-div">
         <input title="Start" type="text" id="main-text-inp" title="box" onclick="widenBox()">

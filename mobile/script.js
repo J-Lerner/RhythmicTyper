@@ -6,9 +6,10 @@ let passNum = 0;
 let i = 0;
 let score = 0;
 let open = false;
+let tableLoaded = false;
 
 // ~ Song Settings ~
-let currentBeat = 0;
+let currentBeat = -1;
 let data = document.cookie.beats;
 
 // ~ Objects ~
@@ -25,10 +26,10 @@ const waveStart = `M0,20 C150, 600 210,20 500,150 L500,00 L0,0 Z`;
 let tickSounds = [new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3")]
 let curTick = 0;
 
-
 copyText.innerHTML = sentStr;
 
 function LoadTable() {
+    tableLoaded = true;
     let songTable = document.querySelector('#song-list-table');
     
     console.log(data.length);
@@ -41,9 +42,9 @@ function LoadTable() {
         newCell.onclick = () => {
             currentBeat = song;
             console.log(songDisplay.children);
-            songDisplay.children[0].innerHTML = data[currentBeat].name;
-            songDisplay.children[2].innerHTML = data[currentBeat].bpm + " bpm";
-            songDisplay.children[4].innerHTML = data[currentBeat].songStr;
+            songDisplay.children[0].innerHTML = data[currentBeat].songStr;
+            songDisplay.children[2].innerHTML = data[currentBeat].name;
+            songDisplay.children[4].innerHTML = data[currentBeat].bpm + " bpm";
         };
 
         newRow.appendChild(newCell);
@@ -129,15 +130,17 @@ function loop() {
             passNum = 0;
             i = 0;
             readyText.style.display = "block";
-            readyText.innerHTML = "You got " + score + " points!";
+            readyText.innerHTML = score + " points!";
+            readyText.style.fontSize = "30px";
         }
     }
 }
 
-function widenBox() {
-    if (!gameStarted) {
+function widenBox() { // Starts game
+    if (!gameStarted && currentBeat != -1) {
         tickSounds[curTick].play()
         path.setAttribute('d', waveStart);
+        readyText.style.fontSize = "50px";
         
         for (let i = 0; i < 100; i++) {
             sentStr += words[parseInt(Math.random() * 400)] + "_";
@@ -158,6 +161,8 @@ function widenBox() {
         }, 250)
         console.log(currentBeat);
         console.log(data[currentBeat].songStr);
+    } else {
+        alert("Choose a song in settings (top right)"); 
     }
 }
 
