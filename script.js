@@ -20,7 +20,9 @@ const waveNormal = "M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
 const waveHit = `M0,100 C150, 400 350,20 500,100 L500,00 L0,0 Z`;
 const waveStart = `M0,20 C150, 600 210,20 500,150 L500,00 L0,0 Z`;
 
-var tickSnd = new Audio("tick.mp3");
+let tickSounds = [new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3")]
+let curTick = 0;
+
 
 copyText.innerHTML = sentStr;
 
@@ -73,7 +75,7 @@ function loop() {
         if (waiting) {
             // Don't do anything
         } else if (beatStr[i] == ".") {
-            tickSnd.play();
+            tickSounds[curTick].play();
             clickable = true;
 
             path.setAttribute('d', waveHit); // Changes wave shape
@@ -96,6 +98,9 @@ function loop() {
                 loop();
             }, quarterNote);
         }
+        curTick++;
+        if (curTick >= tickSounds.length) 
+            curTick = 0;
     }
     if (i >= beatStr.length) { // If song is over
         passNum += 1;
@@ -125,7 +130,7 @@ function loop() {
 
 function widenBox() {
     if (!gameStarted) {
-        tickSnd.play();
+        tickSounds[curTick].play()
         path.setAttribute('d', waveStart);
         
         for (let i = 0; i < 100; i++) {
