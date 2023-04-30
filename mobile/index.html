@@ -28,15 +28,25 @@
                     <br>
                 </a>
                 <small>(you cannot gain more or less points for the same action)</small>
-                <br><br>
-                <a>Please note that this game is best played in fullscreen, or in a fully extended window. If on 
-                    a mobile device and you haven't been redirected, click the link below...
-                </a>
-                <br><br>
-                <a href="/mobile/">Mobile Website</a>
             </div>
         </div>
     </div>
+
+    <div id="top-bar">
+        <div id="Header">
+            <h1>Rhythmic Typer 
+                <a class="material-symbols-outlined" onclick="ChangeModal(true);" style="cursor: pointer">
+                    help
+                </a>
+            </h1>
+        </div>
+    </div>
+
+    <div id="bar-open" onclick="OpenSideBar()">
+        <a class="material-symbols-outlined">
+          settings
+        </a>
+      </div>    
 
     <div id="side-bar">
         <div style="height: 100%; width: 95%; overflow-y: auto; overflow-x: hidden;">
@@ -44,68 +54,31 @@
                 <table id="song-list-table">
                 </table>
             </div>
-            <div class="side-container">
-                <table style="height: 250px; text-align: center;">
-                    <tr>
-                        <th>Font Family</th>
-                        <th>Font Size</th>
-                    </tr>
-                    <tr>
-                        <td style="font-family: Arial, Helvetica, sans-serif">Arial</td>
-                        <td>12px</td>
-                    </tr>
-                    <tr>
-                        <td style="font-family: 'Roboto', sans-serif;">Roboto</td>
-                        <td>14px</td>
-                    </tr>
-                    <tr>
-                        <td style="font-family: 'Poppin', sans-serif">Poppin</td>
-                        <td>16px</td>
-                    </tr>
-                </table>
-            </div>
         </div>
     </div>
     
-    <div id="bar-open" onclick="OpenSideBar()">
-      <a class="material-symbols-outlined">
-        settings
-      </a>
-    </div>    
-
-
-    <div id="top-curve">    
-        <div id="header">
-            <h1>Rhythmic Typer</h1>
-            <a class="material-symbols-outlined" onclick="ChangeModal(true);" style="cursor: pointer">
-                help
-            </a>
-        </div>
-        <div id="song-display">
-            <a id="song-name">-Name-</a><br>
-            <a id="song-bpm">-BPM-</a><br>
-            <a id="song-string">-Song Sheet-</a>
-        </div>
+    <div id="song-display">
+        <a id="song-name">-Name-</a><br>
+        <a id="song-bpm">-BPM-</a><br>
+        <a id="song-string">-Song Sheet-</a>
     </div>
-
-    <img src="icon.png" id="icon" alt="main icon">
+    
+    <div id="ready-text">Your turn!</div>
 
     <div id="type-div">
         <input title="Start" type="text" id="main-text-inp" title="box" onclick="widenBox()">
         <a id="copy-text"></a>
     </div>
-
-    <div id="ready-text">Your turn!</div>
     
-
     <div id="vb-container">
         <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
             <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" style="stroke: none; fill:rgb(103, 103, 255);"></path>
         </svg>
     </div>
+    
 </body>
-<script src="words.js"></script>
+<script src="../words.js"></script>
 <script src="script.js"></script>
-<script src="cookies.js"></script>
+<script src="../cookies.js"></script>
 
 </html>

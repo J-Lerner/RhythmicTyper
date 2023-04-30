@@ -62,9 +62,9 @@ window.onkeydown = (e) => {
 
         sentStr = sentStr.slice(1);
         if (sentStr.charAt(0) == " ") { // Checks if there is a space.
-            copyText.style.left = "-465px"; // Artificial space
+            copyText.style.left = "100px"; // Artificial space
         } else {
-            copyText.style.left = "-475px";
+            copyText.style.left = "85px";
         }
 
     }
@@ -149,7 +149,7 @@ function widenBox() {
             loop();
         }, 1000);
         setTimeout(() => {
-            textInp.style.width = "500px";
+            textInp.style.width = "85%";
             textInp.style.fontSize = "50px";
             copyText.style.display = "inline-block";
         }, 400);

@@ -25,8 +25,8 @@ body {
 }
 
 #modal-container {
-    margin: 8% auto;
-    width: 30%;
+    margin: 25% auto;
+    width: 80%;
     height: 70%;
 
     border-radius: 35px;
@@ -55,48 +55,24 @@ body {
     font-size: 20px;
 }
 
-#top-curve {
+#top-bar {
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 0 0 45px 45px;
-    width: 100%;
-    height: 30%;
+    width: 95%;
     background: lightblue;
+    height: 10%;
+    border-radius: 0 0 15px 15px;
+    padding-left: 5%;
 }
 
 #header {
-    width: 440px;
     display: inline-block;
-    position: absolute;
-    margin: 0 50%;
-    transform: translate(-50%);
-    font-size: 25px;
-    z-index: 15;;
+    width: 100%;
 }
 
 #header > * {
     display: inline;
-}
-
-#header > h1 {
-    font-family: 'Poppins', sans-serif
-}
-
-#song-display {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-    text-align: center;
-    font-size: 20px;
-    font-family: 'Roboto', monospace;
-    line-height: 20px;
-}
-
-#song-string {
-    line-height: 50px;
-    font-size: 30px;
 }
 
 #bar-open {
@@ -109,7 +85,7 @@ body {
     background: skyblue;
     padding: 10px 20px;
     cursor: pointer;
-    z-index: 11;
+    z-index: 21;
     transition: .4s;
 }
   
@@ -127,7 +103,7 @@ body {
     top: 0;
 
     overflow: hidden;
-    z-index: 10;
+    z-index: 20;
     border-radius: 35px 0 0 35px;
     background: skyblue;
     width: 300px;
@@ -159,17 +135,25 @@ td:hover {
     border-radius: 35px;
 }
 
-#icon {
-    width: 100px;
-    image-rendering: crisp-edges;
-    position: absolute;
+#song-display {
+    margin-top: 25%;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Roboto', monospace;
+    line-height: 20px;
+}
+
+#song-string {
+    line-height: 50px;
+    font-size: 30px;
 }
 
 #type-div {
     position: absolute;
-    margin: 5rem 50%;
-    transform: translate(-50%);
-    width: 520px;
+    top: 35%;
+    width: 90%;
     height: 100px;
     white-space: nowrap;
     overflow: hidden;
@@ -177,7 +161,8 @@ td:hover {
 }
 
 #main-text-inp {
-    position: relative;
+    position: absolute;
+    right: 0;
     width: 80px;
     font-size: 30px;
     padding: 10px;
@@ -192,8 +177,8 @@ td:hover {
     position: relative;
     z-index: 12;
     font-size: 50px;
-    top: 0;
-    left: -470px;
+    top: 10px;
+    left: 85px;
     user-select: none;
     color: gray;
     transition: 0s !important;
@@ -202,7 +187,7 @@ td:hover {
 #ready-text {
     display: none;
     position: absolute;
-    margin: 20% 50%;
+    margin: 100% 50%;
     transform: translate(-50%);
 
     font-size: 50px;
@@ -227,6 +212,6 @@ svg {
     pointer-events: none;
     display: inline-block;
     position: absolute;
-    bottom: 250px;
+    bottom: 0;
     left: 0;
 }

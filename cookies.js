@@ -1,32 +1,32 @@
 data = [
     {
         "name": "Epic",
-        "bpm": 165,
-        "songStr": "..  ..  .  . . . . ... . . ..",
+        "bpm": 80,
+        "songStr": "..--..--.--.-.-.-.-...-.-.-..",
         "difficulty": "medium"
     },
     {
         "name": "Too Much?",
-        "bpm": 300,
-        "songStr": "... .. ... . ... . . . ...",
+        "bpm": 150,
+        "songStr": "...-..-...-.-...-.-.-.-...",
         "difficulty": "super hard"
     },
     {
         "name": "Some Charming Guy",
-        "bpm": 208,
-        "songStr": "..  .  .  . .. . .",
+        "bpm": 104,
+        "songStr": "..-.-.-.-..-.-.",
         "difficulty": "easy"
     },
     {
         "name": "Longo",
-        "bpm": 200,
-        "songStr": "....  .... ....  .... ....",
+        "bpm": 100,
+        "songStr": "....--....-....--....-....",
         "difficulty": "hard"
     },
     {
         "name": "Unnamed",
-        "bpm": 1000,
-        "songStr": "... .. ... ..   . . .... . . .... .. .. . .  .  .",
+        "bpm": 500,
+        "songStr": "...-..-...-..---.-.-....-.-.-....-..-..-.-.--. -.",
         "difficulty": "not possible"
     }
 ]
