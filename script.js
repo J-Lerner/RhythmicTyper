@@ -24,6 +24,25 @@ var tickSnd = new Audio("tick.mp3");
 
 copyText.innerHTML = sentStr;
 
+function LoadTable() {
+    let songTable = document.querySelector('#song-list-table');
+    
+    console.log(data.length);
+    for (let song = 0; song < data.length; song++) {
+        console.log(song);
+        let newRow = document.createElement("tr");
+
+        let newCell = document.createElement("td");
+        newCell.innerHTML = data[song].name + "<br>BPM: " + data[song].bpm + "<br>Difficulty: " + data[song].difficulty
+        newCell.onclick = () => {
+            currentBeat = song;
+        }
+
+        newRow.appendChild(newCell);
+        songTable.appendChild(newRow);
+    }
+}
+
 window.onkeydown = (e) => {
     if (passNum == 1) {
         if (textInp == document.activeElement && clickable && e.key == sentStr.charAt(0)) {
@@ -43,7 +62,6 @@ window.onkeydown = (e) => {
     }
     copyText.innerHTML = sentStr;
     textInp.value = "";
-    console.log(score);
 }
 
 function loop() {
@@ -81,7 +99,7 @@ function loop() {
     }
     if (i >= beatStr.length) { // If song is over
         passNum += 1;
-        i = 1;
+        i = 0;
         if (passNum == 1) {
             let x = 1; // Seconds/times it will count down for
             let readyInterval = setInterval(() => {
@@ -97,6 +115,8 @@ function loop() {
             }, quarterNote);
         } else if (passNum > 1) { // Game end
             closeBox();
+            passNum = 0;
+            i = 0;
             readyText.style.display = "block";
             readyText.innerHTML = "You got " + score + " points!";
         }
@@ -125,6 +145,8 @@ function widenBox() {
         setTimeout(() => {
             path.setAttribute('d', waveNormal);
         }, 250)
+        console.log(currentBeat);
+        console.log(data[currentBeat].songStr);
     }
 }
 
@@ -153,5 +175,15 @@ function OpenSideBar() {
         openBarText.innerHTML = "chevron_right";
         openBar.style.background = "none";
         sideBar.style.right = "0";
+    }
+}
+
+function ChangeModal(open) {
+    let modal = document.querySelector('#modal');
+
+    if (!open) {
+        modal.style.display = "none";
+    } else {
+        modal.style.display = "block";
     }
 }

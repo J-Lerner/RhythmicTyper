@@ -10,36 +10,54 @@
     <title>Rythmic Typer</title>
 </head>
 <body>
-    <div id="modal">
+    <div id="modal" onclick="ChangeModal(false); LoadTable()">
         <div id="modal-container">
-            <h1>How It Works</h1>
-            <ol>
-                <li>Click the white text box</li>
-                <li>Listen to the rythm</li>
-                <li>Type the words in the box along with the rythm</li>
-            </ol>
-            <a>
-                To change the song or font, click the settings icon in the top right of the screen.
-                <br><br>
-                Clicking off-beat or typing the wrong letter will lose points
-                <br>
-                Typing the right letter on beat will gain points.
-                <br>
-            </a>
-            <small>(you cannot gain more or less points for the same action)</small>
+            <div id="modal-text-div">
+                <h1>How It Works</h1>
+                <ol>
+                    <li>Click the white text box</li>
+                    <li>Listen to the rythm</li>
+                    <li>Type the words in the box along with the rythm</li>
+                </ol>
+                <a>
+                    To change the song or font, click the settings icon in the top right of the screen.
+                    <br><br>
+                    Clicking off-beat or typing the wrong letter will lose points
+                    <br>
+                    Typing the right letter on beat will gain points.
+                    <br>
+                </a>
+                <small>(you cannot gain more or less points for the same action)</small>
+            </div>
         </div>
     </div>
 
     <div id="side-bar">
-        <div id="side-container">
-            <table id="song-list-table">
-                <tr>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                </tr>
-            </table>
+        <div style="height: 100%; width: 95%; overflow-y: auto; overflow-x: hidden;">
+            <div class="side-container" style="height: 80%">
+                <table id="song-list-table">
+                </table>
+            </div>
+            <div class="side-container">
+                <table style="height: 250px; text-align: center;">
+                    <tr>
+                        <th>Font Family</th>
+                        <th>Font Size</th>
+                    </tr>
+                    <tr>
+                        <td>Arial</td>
+                        <td>12px</td>
+                    </tr>
+                    <tr>
+                        <td>Roboto</td>
+                        <td>14px</td>
+                    </tr>
+                    <tr>
+                        <td>Poppin</td>
+                        <td>16px</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
     
@@ -49,11 +67,18 @@
       </a>
     </div>    
 
+    <div id="header">
+        <h1>Rythmic Typer</h1>
+        <a class="material-symbols-outlined" onclick="ChangeModal(true);" style="cursor: pointer">
+            help
+        </a>
+    </div>
+
     <div id="top-curve"></div>
     <img src="icon.png" id="icon" alt="main icon">
 
     <div id="type-div">
-        <input type="text" id="main-text-inp" title="box" onclick="widenBox()">
+        <input title="Start" type="text" id="main-text-inp" title="box" onclick="widenBox()">
         <a id="copy-text"></a>
     </div>
 
