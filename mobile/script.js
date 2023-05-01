@@ -23,7 +23,7 @@ const waveNormal = "M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
 const waveHit = `M0,100 C150, 400 350,20 500,100 L500,00 L0,0 Z`;
 const waveStart = `M0,20 C150, 600 210,20 500,150 L500,00 L0,0 Z`;
 
-let tickSounds = [new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3")]
+let tickSounds = [new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3")]
 let curTick = 0;
 
 copyText.innerHTML = sentStr;
@@ -161,8 +161,9 @@ function widenBox() { // Starts game
         }, 250)
         console.log(currentBeat);
         console.log(data[currentBeat].songStr);
-    } else {
+    } else if (currentBeat == -1) {
         alert("Choose a song in settings (top right)"); 
+        console.log(currentBeat);
     }
 }
 

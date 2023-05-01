@@ -6,9 +6,11 @@ let passNum = 0;
 let i = 0;
 let score = 0;
 let open = false;
+let isTextCustom = false;
+let customTextStr = "";
 
 // ~ Song Settings ~
-let currentBeat = 0;
+let currentBeat = -1;
 let data = document.cookie.beats;
 
 // ~ Objects ~
@@ -22,7 +24,7 @@ const waveNormal = "M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
 const waveHit = `M0,100 C150, 400 350,20 500,100 L500,00 L0,0 Z`;
 const waveStart = `M0,20 C150, 600 210,20 500,150 L500,00 L0,0 Z`;
 
-let tickSounds = [new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3")]
+let tickSounds = [new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3"), new Audio("tick.mp3")]
 let curTick = 0;
 
 copyText.innerHTML = sentStr;
@@ -142,13 +144,23 @@ function loop() {
 }
 
 function widenBox() {
-    if (!gameStarted) {
+    if (!gameStarted && currentBeat != -1) {
         tickSounds[curTick].play()
         path.setAttribute('d', waveStart);
         
+        let newStr = "";
+
         for (let i = 0; i < 100; i++) {
-            sentStr += words[parseInt(Math.random() * 400)] + "_";
+            newStr += words[parseInt(Math.random() * 400)] + "_";
         }
+
+        if (isTextCustom) {
+            let customTextElem = document.querySelector('#custom-text');
+            sentStr = customTextElem.value;
+        } else {
+            sentStr = newStr;
+        }
+
         copyText.innerHTML = sentStr;
 
         setTimeout(() => {
@@ -165,6 +177,8 @@ function widenBox() {
         }, 250)
         console.log(currentBeat);
         console.log(data[currentBeat].songStr);
+    } else {
+        alert("Choose a song in settings (top right)"); 
     }
 }
 
@@ -193,6 +207,15 @@ function OpenSideBar() {
         openBarText.innerHTML = "chevron_right";
         openBar.style.background = "none";
         sideBar.style.right = "0";
+    }
+}
+
+function ChangeCustomText(elem) {
+    isTextCustom = !isTextCustom;
+    if (isTextCustom) {
+        elem.innerHTML = "On";
+    } else {
+        elem.innerHTML = "Off";
     }
 }
 

@@ -25,7 +25,7 @@ data = [
     },
     {
         "name": "Unnamed",
-        "bpm": 500,
+        "bpm": 200,
         "songStr": "...-..-...-..---.-.-....-.-.-....-..-..-.-.--. -.",
         "difficulty": "not possible"
     }
