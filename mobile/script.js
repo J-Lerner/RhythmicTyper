@@ -4,7 +4,7 @@ let waiting = false;
 let clickable = false; // Checks if user is allowed to type
 let passNum = 0;
 let i = 0;
-let score = 0;
+let score = 50;
 let open = false;
 let tableLoaded = false;
 
@@ -32,16 +32,13 @@ function LoadTable() {
     tableLoaded = true;
     let songTable = document.querySelector('#song-list-table');
     
-    console.log(data.length);
     for (let song = 0; song < data.length; song++) {
-        console.log(song);
         let newRow = document.createElement("tr");
 
         let newCell = document.createElement("td");
         newCell.innerHTML = data[song].name + "<br>BPM: " + data[song].bpm + "<br>Difficulty: " + data[song].difficulty
         newCell.onclick = () => {
             currentBeat = song;
-            console.log(songDisplay.children);
             songDisplay.children[0].innerHTML = data[currentBeat].songStr;
             songDisplay.children[2].innerHTML = data[currentBeat].name;
             songDisplay.children[4].innerHTML = data[currentBeat].bpm + " bpm";
@@ -138,6 +135,7 @@ function loop() {
 
 function widenBox() { // Starts game
     if (!gameStarted && currentBeat != -1) {
+        score = 50;
         tickSounds[curTick].play()
         path.setAttribute('d', waveStart);
         readyText.style.fontSize = "50px";
@@ -159,11 +157,8 @@ function widenBox() { // Starts game
         setTimeout(() => {
             path.setAttribute('d', waveNormal);
         }, 250)
-        console.log(currentBeat);
-        console.log(data[currentBeat].songStr);
     } else if (currentBeat == -1) {
         alert("Choose a song in settings (top right)"); 
-        console.log(currentBeat);
     }
 }
 
