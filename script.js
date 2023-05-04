@@ -59,11 +59,15 @@ function LoadTable() {
 
 window.onkeydown = (e) => {
     if (passNum == 1) {
+        console.log(clickable);
+        console.log(e.key == sentStr.charAt(0));
         if (textInp == document.activeElement && clickable && e.key == sentStr.charAt(0)) {
             score++;
+            console.log("+ | " + score)
             clickable = false;
         } else {
             score--;
+            console.log("- | " + score)
         }
 
         sentStr = sentStr.slice(1);
@@ -88,14 +92,16 @@ function loop() {
             // Don't do anything
         } else if (beatStr[i] == ".") {
             tickSounds[curTick].play();
-            clickable = true;
 
             path.setAttribute('d', waveHit); // Changes wave shape
 
             setTimeout(() => {
+                path.setAttribute('d', waveNormal);
+            }, 100);
+            setTimeout(() => {
                 clickable = false;
                 path.setAttribute('d', waveNormal);
-            }, 150);
+            }, 350); // Change 350 for difficulty
             waiting = true;
             setTimeout(() => {
                 waiting = false;
@@ -109,6 +115,12 @@ function loop() {
                 i++;
                 loop();
             }, quarterNote);
+            
+            if (beatStr[i + 1] == ".") {
+                setTimeout(() => {
+                    clickable = true; // Allows user to click before note has hit
+                }, quarterNote - 350); // Change 350 for difficulty
+            }
         }
         curTick++;
         if (curTick >= tickSounds.length) 
@@ -154,7 +166,7 @@ function widenBox() {
 
         if (isTextCustom) {
             let customTextElem = document.querySelector('#custom-text');
-            sentStr = customTextElem.value;
+            sentStr = customTextElem.value.toLowerCase().replaceAll(' ', '_');
         } else {
             sentStr = newStr;
         }
@@ -168,11 +180,12 @@ function widenBox() {
         setTimeout(() => {
             textInp.style.width = "500px";
             textInp.style.fontSize = "50px";
+            textInp.style.boxShadow = "none";
             copyText.style.display = "inline-block";
         }, 400);
         setTimeout(() => {
             path.setAttribute('d', waveNormal);
-        }, 250)
+        }, 100)
     } else {
         alert("Choose a song in settings (top right)"); 
     }
@@ -185,6 +198,7 @@ function closeBox() {
         textInp.style.width = "80px";
         textInp.style.fontSize = "30px";
         copyText.style.display = "none";
+        textInp.style.boxShadow = "3px 3px 5px 1px navy";
     }
 }
 
@@ -196,7 +210,7 @@ function OpenSideBar() {
     if (open) {
         open = false;
         openBarText.innerHTML = "settings";
-        openBar.style.background = "skyblue";
+        openBar.style.background = "#639BFF";
         sideBar.style.right = "-300px";
     } else if (!open) {
         open = true;
@@ -226,12 +240,21 @@ function ChangeCustomText(elem) {
     }
 }
 
-function ChangeModal(open) {
+function ChangeModal(open) { // Open == if it should be opened
     let modal = document.querySelector('#modal');
+    let modalCont = document.querySelector('#modal-container');
 
     if (!open) {
-        modal.style.display = "none";
+        modal.style.background = "rgba(0, 0, 0, 0)";
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, 610);
+        modalCont.style.margin = "-92% auto";
     } else {
         modal.style.display = "block";
+        setTimeout(() => {
+            modal.style.background = "rgba(0, 0, 0, .4)";
+            modalCont.style.margin = "8% auto";
+        }, 110);
     }
 }
