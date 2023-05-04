@@ -85,9 +85,11 @@ function loop() {
             path.setAttribute('d', waveHit); // Changes wave shape
 
             setTimeout(() => {
-                clickable = false;
                 path.setAttribute('d', waveNormal);
-            }, 150);
+            }, 100);
+            setTimeout(() => {
+                clickable = false;
+            }, 350); // Change 350 for difficulty
             waiting = true;
             setTimeout(() => {
                 waiting = false;
@@ -101,6 +103,12 @@ function loop() {
                 i++;
                 loop();
             }, quarterNote);
+
+            if (beatStr[i + 1] == ".") {
+                setTimeout(() => {
+                    clickable = true; // Allows user to click before note has hit
+                }, quarterNote - 350); // Change 350 for difficulty
+            }
         }
         curTick++;
         if (curTick >= tickSounds.length) 
@@ -153,10 +161,11 @@ function widenBox() { // Starts game
             textInp.style.width = "85%";
             textInp.style.fontSize = "50px";
             copyText.style.display = "inline-block";
+            textInp.style.boxShadow = "none";
         }, 400);
         setTimeout(() => {
             path.setAttribute('d', waveNormal);
-        }, 250)
+        }, 100)
     } else if (currentBeat == -1) {
         alert("Choose a song in settings (top right)"); 
     }
@@ -169,6 +178,7 @@ function closeBox() {
         textInp.style.width = "80px";
         textInp.style.fontSize = "30px";
         copyText.style.display = "none";
+        textInp.style.boxShadow = "3px 3px 5px 1px navy";
     }
 }
 
@@ -180,7 +190,7 @@ function OpenSideBar() {
     if (open) {
         open = false;
         openBarText.innerHTML = "settings";
-        openBar.style.background = "skyblue";
+        openBar.style.background = "#639BFF";
         sideBar.style.right = "-300px";
     } else if (!open) {
         open = true;
@@ -190,12 +200,21 @@ function OpenSideBar() {
     }
 }
 
-function ChangeModal(open) {
+function ChangeModal(open) { // Open == if it should be opened
     let modal = document.querySelector('#modal');
+    let modalCont = document.querySelector('#modal-container');
 
     if (!open) {
-        modal.style.display = "none";
+        modal.style.background = "rgba(0, 0, 0, 0)";
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, 610);
+        modalCont.style.margin = "-192% auto";
     } else {
         modal.style.display = "block";
+        setTimeout(() => {
+            modal.style.background = "rgba(0, 0, 0, .4)";
+            modalCont.style.margin = "8% auto";
+        }, 110);
     }
 }
